@@ -39,10 +39,10 @@
                      <% 
                         if(typeof data != 'undefined' && data.recpName){%>
                             <input class="w3-input" type="text" placeholder="Write recipint Name" 
-                             name="recpName" value="<%= data.recpName%>" required>
+                             name="recpName" value="<%= data.recpName%>" required  autocomplete="off"
                         <%}else{%>
                          <input class="w3-input" type="text" placeholder="Write recipint Name" 
-                            name="recpName" required>
+                            name="recpName" required autocomplete="off">
                          <%}
                      %>
                 </p>
