@@ -1,0 +1,69 @@
+<% include index.ejs %>
+
+    <div class="w3-container">
+        <div class="w3-bar w3-deep-orange">
+            <a href="/" class="w3-bar-item w3-button">
+                <i class="fa fa-home w3-xlarge w3-hover"></i>
+            </a>
+            <a href="/msgForm" class="w3-bar-item w3-btn w3-hover">Send Massege</a>
+            <a href="/msg" class="w3-bar-item w3-btn w3-hover">See Masseges</a>
+        </div>
+        <div class="w3-container w3-orange w3-animate-right">
+                <h1 style="color:white">Send Massege</h1>
+        </div>
+    </div>
+
+    <div class="w3-card-12 w3-container w3-animate-right">
+
+        <% 
+            if(typeof data != 'undefined' && data.senderName){%>
+                <form  method="POST" action="/msg/<%= data.senderName %>" class="w3-container">
+            <%}else{%>
+                <form  method="POST" action="/msg" class="w3-container">
+             <%}
+         %> 
+                <p>
+                    <label>Your Name</label>
+                    <% 
+                        if(typeof data != 'undefined' && data.senderName ){%>
+                            <input class="w3-input" type="text" placeholder="Write Your Name Here"
+                             name="senderName" value="<%= data.senderName %>" required> 
+                        <%}else{%>
+                            <input class="w3-input" type="text" placeholder="Write Your Name Here"
+                             name="senderName" required>
+                        <%}
+                    %>
+                </p> 
+                <p>     
+                     <label>Send To</label>
+                     <% 
+                        if(typeof data != 'undefined' && data.recpName){%>
+                            <input class="w3-input" type="text" placeholder="Write recipint Name" 
+                             name="recpName" value="<%= data.recpName%>" required>
+                        <%}else{%>
+                         <input class="w3-input" type="text" placeholder="Write recipint Name" 
+                            name="recpName" required>
+                         <%}
+                     %>
+                </p>
+
+                 <p>    
+                     <label>Your Massege</label>
+                     <% 
+                        if(typeof data != 'undefined' && data.msg){%>
+                         <textarea cols="20" rowa="2" class="w3-input"  placeholder="Write Your Massege"
+                          name="msg" value="<%= data.msg%>" required></textarea>
+                        <%}else{%>
+                         <textarea cols="20" rows="2" class="w3-input" placeholder="Write Your Massege"
+                          name="msg" required></textarea>
+                        <%}
+                     %>
+                    
+                     
+                </p>
+                <p>
+                    <input type="submit" value="Send"
+                     class="w3-btn w3-medium w3-round w3-orange w3-hover">
+                </p>
+            </form>
+    </div>
